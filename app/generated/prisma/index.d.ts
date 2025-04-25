@@ -14,10 +14,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Order
+ * Model test1
  * 
  */
-export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
+export type test1 = $Result.DefaultSelection<Prisma.$test1Payload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -26,8 +26,8 @@ export type Order = $Result.DefaultSelection<Prisma.$OrderPayload>
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Orders
- * const orders = await prisma.order.findMany()
+ * // Fetch zero or more Test1s
+ * const test1s = await prisma.test1.findMany()
  * ```
  *
  *
@@ -47,8 +47,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Orders
-   * const orders = await prisma.order.findMany()
+   * // Fetch zero or more Test1s
+   * const test1s = await prisma.test1.findMany()
    * ```
    *
    *
@@ -145,14 +145,14 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.order`: Exposes CRUD operations for the **Order** model.
+   * `prisma.test1`: Exposes CRUD operations for the **test1** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Orders
-    * const orders = await prisma.order.findMany()
+    * // Fetch zero or more Test1s
+    * const test1s = await prisma.test1.findMany()
     * ```
     */
-  get order(): Prisma.OrderDelegate<ExtArgs, ClientOptions>;
+  get test1(): Prisma.test1Delegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +593,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Order: 'Order'
+    test1: 'test1'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,81 +612,81 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "order"
+      modelProps: "test1"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Order: {
-        payload: Prisma.$OrderPayload<ExtArgs>
-        fields: Prisma.OrderFieldRefs
+      test1: {
+        payload: Prisma.$test1Payload<ExtArgs>
+        fields: Prisma.test1FieldRefs
         operations: {
           findUnique: {
-            args: Prisma.OrderFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload> | null
+            args: Prisma.test1FindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.OrderFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>
+            args: Prisma.test1FindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>
           }
           findFirst: {
-            args: Prisma.OrderFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload> | null
+            args: Prisma.test1FindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.OrderFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>
+            args: Prisma.test1FindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>
           }
           findMany: {
-            args: Prisma.OrderFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>[]
+            args: Prisma.test1FindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>[]
           }
           create: {
-            args: Prisma.OrderCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>
+            args: Prisma.test1CreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>
           }
           createMany: {
-            args: Prisma.OrderCreateManyArgs<ExtArgs>
+            args: Prisma.test1CreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.OrderCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>[]
+            args: Prisma.test1CreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>[]
           }
           delete: {
-            args: Prisma.OrderDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>
+            args: Prisma.test1DeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>
           }
           update: {
-            args: Prisma.OrderUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>
+            args: Prisma.test1UpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>
           }
           deleteMany: {
-            args: Prisma.OrderDeleteManyArgs<ExtArgs>
+            args: Prisma.test1DeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.OrderUpdateManyArgs<ExtArgs>
+            args: Prisma.test1UpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.OrderUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>[]
+            args: Prisma.test1UpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>[]
           }
           upsert: {
-            args: Prisma.OrderUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$OrderPayload>
+            args: Prisma.test1UpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$test1Payload>
           }
           aggregate: {
-            args: Prisma.OrderAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateOrder>
+            args: Prisma.Test1AggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTest1>
           }
           groupBy: {
-            args: Prisma.OrderGroupByArgs<ExtArgs>
-            result: $Utils.Optional<OrderGroupByOutputType>[]
+            args: Prisma.test1GroupByArgs<ExtArgs>
+            result: $Utils.Optional<Test1GroupByOutputType>[]
           }
           count: {
-            args: Prisma.OrderCountArgs<ExtArgs>
-            result: $Utils.Optional<OrderCountAggregateOutputType> | number
+            args: Prisma.test1CountArgs<ExtArgs>
+            result: $Utils.Optional<Test1CountAggregateOutputType> | number
           }
         }
       }
@@ -774,7 +774,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    order?: OrderOmit
+    test1?: test1Omit
   }
 
   /* Types for Logging */
@@ -870,362 +870,346 @@ export namespace Prisma {
    */
 
   /**
-   * Model Order
+   * Model test1
    */
 
-  export type AggregateOrder = {
-    _count: OrderCountAggregateOutputType | null
-    _avg: OrderAvgAggregateOutputType | null
-    _sum: OrderSumAggregateOutputType | null
-    _min: OrderMinAggregateOutputType | null
-    _max: OrderMaxAggregateOutputType | null
+  export type AggregateTest1 = {
+    _count: Test1CountAggregateOutputType | null
+    _avg: Test1AvgAggregateOutputType | null
+    _sum: Test1SumAggregateOutputType | null
+    _min: Test1MinAggregateOutputType | null
+    _max: Test1MaxAggregateOutputType | null
   }
 
-  export type OrderAvgAggregateOutputType = {
+  export type Test1AvgAggregateOutputType = {
     id: number | null
-    quantity: number | null
   }
 
-  export type OrderSumAggregateOutputType = {
+  export type Test1SumAggregateOutputType = {
     id: number | null
-    quantity: number | null
   }
 
-  export type OrderMinAggregateOutputType = {
+  export type Test1MinAggregateOutputType = {
     id: number | null
-    itemName: string | null
-    quantity: number | null
+    name: string | null
     createdAt: Date | null
   }
 
-  export type OrderMaxAggregateOutputType = {
+  export type Test1MaxAggregateOutputType = {
     id: number | null
-    itemName: string | null
-    quantity: number | null
+    name: string | null
     createdAt: Date | null
   }
 
-  export type OrderCountAggregateOutputType = {
+  export type Test1CountAggregateOutputType = {
     id: number
-    itemName: number
-    quantity: number
+    name: number
     createdAt: number
     _all: number
   }
 
 
-  export type OrderAvgAggregateInputType = {
+  export type Test1AvgAggregateInputType = {
     id?: true
-    quantity?: true
   }
 
-  export type OrderSumAggregateInputType = {
+  export type Test1SumAggregateInputType = {
     id?: true
-    quantity?: true
   }
 
-  export type OrderMinAggregateInputType = {
+  export type Test1MinAggregateInputType = {
     id?: true
-    itemName?: true
-    quantity?: true
+    name?: true
     createdAt?: true
   }
 
-  export type OrderMaxAggregateInputType = {
+  export type Test1MaxAggregateInputType = {
     id?: true
-    itemName?: true
-    quantity?: true
+    name?: true
     createdAt?: true
   }
 
-  export type OrderCountAggregateInputType = {
+  export type Test1CountAggregateInputType = {
     id?: true
-    itemName?: true
-    quantity?: true
+    name?: true
     createdAt?: true
     _all?: true
   }
 
-  export type OrderAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Test1AggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Order to aggregate.
+     * Filter which test1 to aggregate.
      */
-    where?: OrderWhereInput
+    where?: test1WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Orders to fetch.
+     * Determine the order of test1s to fetch.
      */
-    orderBy?: OrderOrderByWithRelationInput | OrderOrderByWithRelationInput[]
+    orderBy?: test1OrderByWithRelationInput | test1OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: OrderWhereUniqueInput
+    cursor?: test1WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Orders from the position of the cursor.
+     * Take `±n` test1s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Orders.
+     * Skip the first `n` test1s.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Orders
+     * Count returned test1s
     **/
-    _count?: true | OrderCountAggregateInputType
+    _count?: true | Test1CountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: OrderAvgAggregateInputType
+    _avg?: Test1AvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: OrderSumAggregateInputType
+    _sum?: Test1SumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: OrderMinAggregateInputType
+    _min?: Test1MinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: OrderMaxAggregateInputType
+    _max?: Test1MaxAggregateInputType
   }
 
-  export type GetOrderAggregateType<T extends OrderAggregateArgs> = {
-        [P in keyof T & keyof AggregateOrder]: P extends '_count' | 'count'
+  export type GetTest1AggregateType<T extends Test1AggregateArgs> = {
+        [P in keyof T & keyof AggregateTest1]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateOrder[P]>
-      : GetScalarType<T[P], AggregateOrder[P]>
+        : GetScalarType<T[P], AggregateTest1[P]>
+      : GetScalarType<T[P], AggregateTest1[P]>
   }
 
 
 
 
-  export type OrderGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: OrderWhereInput
-    orderBy?: OrderOrderByWithAggregationInput | OrderOrderByWithAggregationInput[]
-    by: OrderScalarFieldEnum[] | OrderScalarFieldEnum
-    having?: OrderScalarWhereWithAggregatesInput
+  export type test1GroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: test1WhereInput
+    orderBy?: test1OrderByWithAggregationInput | test1OrderByWithAggregationInput[]
+    by: Test1ScalarFieldEnum[] | Test1ScalarFieldEnum
+    having?: test1ScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: OrderCountAggregateInputType | true
-    _avg?: OrderAvgAggregateInputType
-    _sum?: OrderSumAggregateInputType
-    _min?: OrderMinAggregateInputType
-    _max?: OrderMaxAggregateInputType
+    _count?: Test1CountAggregateInputType | true
+    _avg?: Test1AvgAggregateInputType
+    _sum?: Test1SumAggregateInputType
+    _min?: Test1MinAggregateInputType
+    _max?: Test1MaxAggregateInputType
   }
 
-  export type OrderGroupByOutputType = {
+  export type Test1GroupByOutputType = {
     id: number
-    itemName: string
-    quantity: number
+    name: string
     createdAt: Date
-    _count: OrderCountAggregateOutputType | null
-    _avg: OrderAvgAggregateOutputType | null
-    _sum: OrderSumAggregateOutputType | null
-    _min: OrderMinAggregateOutputType | null
-    _max: OrderMaxAggregateOutputType | null
+    _count: Test1CountAggregateOutputType | null
+    _avg: Test1AvgAggregateOutputType | null
+    _sum: Test1SumAggregateOutputType | null
+    _min: Test1MinAggregateOutputType | null
+    _max: Test1MaxAggregateOutputType | null
   }
 
-  type GetOrderGroupByPayload<T extends OrderGroupByArgs> = Prisma.PrismaPromise<
+  type GetTest1GroupByPayload<T extends test1GroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<OrderGroupByOutputType, T['by']> &
+      PickEnumerable<Test1GroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof OrderGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof Test1GroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], OrderGroupByOutputType[P]>
-            : GetScalarType<T[P], OrderGroupByOutputType[P]>
+              : GetScalarType<T[P], Test1GroupByOutputType[P]>
+            : GetScalarType<T[P], Test1GroupByOutputType[P]>
         }
       >
     >
 
 
-  export type OrderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type test1Select<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    itemName?: boolean
-    quantity?: boolean
+    name?: boolean
     createdAt?: boolean
-  }, ExtArgs["result"]["order"]>
+  }, ExtArgs["result"]["test1"]>
 
-  export type OrderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type test1SelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    itemName?: boolean
-    quantity?: boolean
+    name?: boolean
     createdAt?: boolean
-  }, ExtArgs["result"]["order"]>
+  }, ExtArgs["result"]["test1"]>
 
-  export type OrderSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type test1SelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    itemName?: boolean
-    quantity?: boolean
+    name?: boolean
     createdAt?: boolean
-  }, ExtArgs["result"]["order"]>
+  }, ExtArgs["result"]["test1"]>
 
-  export type OrderSelectScalar = {
+  export type test1SelectScalar = {
     id?: boolean
-    itemName?: boolean
-    quantity?: boolean
+    name?: boolean
     createdAt?: boolean
   }
 
-  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemName" | "quantity" | "createdAt", ExtArgs["result"]["order"]>
+  export type test1Omit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt", ExtArgs["result"]["test1"]>
 
-  export type $OrderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Order"
+  export type $test1Payload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "test1"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      itemName: string
-      quantity: number
+      name: string
       createdAt: Date
-    }, ExtArgs["result"]["order"]>
+    }, ExtArgs["result"]["test1"]>
     composites: {}
   }
 
-  type OrderGetPayload<S extends boolean | null | undefined | OrderDefaultArgs> = $Result.GetResult<Prisma.$OrderPayload, S>
+  type test1GetPayload<S extends boolean | null | undefined | test1DefaultArgs> = $Result.GetResult<Prisma.$test1Payload, S>
 
-  type OrderCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<OrderFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: OrderCountAggregateInputType | true
+  type test1CountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<test1FindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Test1CountAggregateInputType | true
     }
 
-  export interface OrderDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Order'], meta: { name: 'Order' } }
+  export interface test1Delegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['test1'], meta: { name: 'test1' } }
     /**
-     * Find zero or one Order that matches the filter.
-     * @param {OrderFindUniqueArgs} args - Arguments to find a Order
+     * Find zero or one Test1 that matches the filter.
+     * @param {test1FindUniqueArgs} args - Arguments to find a Test1
      * @example
-     * // Get one Order
-     * const order = await prisma.order.findUnique({
+     * // Get one Test1
+     * const test1 = await prisma.test1.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends OrderFindUniqueArgs>(args: SelectSubset<T, OrderFindUniqueArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends test1FindUniqueArgs>(args: SelectSubset<T, test1FindUniqueArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Order that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Test1 that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {OrderFindUniqueOrThrowArgs} args - Arguments to find a Order
+     * @param {test1FindUniqueOrThrowArgs} args - Arguments to find a Test1
      * @example
-     * // Get one Order
-     * const order = await prisma.order.findUniqueOrThrow({
+     * // Get one Test1
+     * const test1 = await prisma.test1.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends OrderFindUniqueOrThrowArgs>(args: SelectSubset<T, OrderFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends test1FindUniqueOrThrowArgs>(args: SelectSubset<T, test1FindUniqueOrThrowArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Order that matches the filter.
+     * Find the first Test1 that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrderFindFirstArgs} args - Arguments to find a Order
+     * @param {test1FindFirstArgs} args - Arguments to find a Test1
      * @example
-     * // Get one Order
-     * const order = await prisma.order.findFirst({
+     * // Get one Test1
+     * const test1 = await prisma.test1.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends OrderFindFirstArgs>(args?: SelectSubset<T, OrderFindFirstArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends test1FindFirstArgs>(args?: SelectSubset<T, test1FindFirstArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Order that matches the filter or
+     * Find the first Test1 that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrderFindFirstOrThrowArgs} args - Arguments to find a Order
+     * @param {test1FindFirstOrThrowArgs} args - Arguments to find a Test1
      * @example
-     * // Get one Order
-     * const order = await prisma.order.findFirstOrThrow({
+     * // Get one Test1
+     * const test1 = await prisma.test1.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends OrderFindFirstOrThrowArgs>(args?: SelectSubset<T, OrderFindFirstOrThrowArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends test1FindFirstOrThrowArgs>(args?: SelectSubset<T, test1FindFirstOrThrowArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Orders that matches the filter.
+     * Find zero or more Test1s that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrderFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {test1FindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Orders
-     * const orders = await prisma.order.findMany()
+     * // Get all Test1s
+     * const test1s = await prisma.test1.findMany()
      * 
-     * // Get first 10 Orders
-     * const orders = await prisma.order.findMany({ take: 10 })
+     * // Get first 10 Test1s
+     * const test1s = await prisma.test1.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const orderWithIdOnly = await prisma.order.findMany({ select: { id: true } })
+     * const test1WithIdOnly = await prisma.test1.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends OrderFindManyArgs>(args?: SelectSubset<T, OrderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends test1FindManyArgs>(args?: SelectSubset<T, test1FindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Order.
-     * @param {OrderCreateArgs} args - Arguments to create a Order.
+     * Create a Test1.
+     * @param {test1CreateArgs} args - Arguments to create a Test1.
      * @example
-     * // Create one Order
-     * const Order = await prisma.order.create({
+     * // Create one Test1
+     * const Test1 = await prisma.test1.create({
      *   data: {
-     *     // ... data to create a Order
+     *     // ... data to create a Test1
      *   }
      * })
      * 
      */
-    create<T extends OrderCreateArgs>(args: SelectSubset<T, OrderCreateArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends test1CreateArgs>(args: SelectSubset<T, test1CreateArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Orders.
-     * @param {OrderCreateManyArgs} args - Arguments to create many Orders.
+     * Create many Test1s.
+     * @param {test1CreateManyArgs} args - Arguments to create many Test1s.
      * @example
-     * // Create many Orders
-     * const order = await prisma.order.createMany({
+     * // Create many Test1s
+     * const test1 = await prisma.test1.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends OrderCreateManyArgs>(args?: SelectSubset<T, OrderCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends test1CreateManyArgs>(args?: SelectSubset<T, test1CreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Orders and returns the data saved in the database.
-     * @param {OrderCreateManyAndReturnArgs} args - Arguments to create many Orders.
+     * Create many Test1s and returns the data saved in the database.
+     * @param {test1CreateManyAndReturnArgs} args - Arguments to create many Test1s.
      * @example
-     * // Create many Orders
-     * const order = await prisma.order.createManyAndReturn({
+     * // Create many Test1s
+     * const test1 = await prisma.test1.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Orders and only return the `id`
-     * const orderWithIdOnly = await prisma.order.createManyAndReturn({
+     * // Create many Test1s and only return the `id`
+     * const test1WithIdOnly = await prisma.test1.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1235,28 +1219,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends OrderCreateManyAndReturnArgs>(args?: SelectSubset<T, OrderCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends test1CreateManyAndReturnArgs>(args?: SelectSubset<T, test1CreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Order.
-     * @param {OrderDeleteArgs} args - Arguments to delete one Order.
+     * Delete a Test1.
+     * @param {test1DeleteArgs} args - Arguments to delete one Test1.
      * @example
-     * // Delete one Order
-     * const Order = await prisma.order.delete({
+     * // Delete one Test1
+     * const Test1 = await prisma.test1.delete({
      *   where: {
-     *     // ... filter to delete one Order
+     *     // ... filter to delete one Test1
      *   }
      * })
      * 
      */
-    delete<T extends OrderDeleteArgs>(args: SelectSubset<T, OrderDeleteArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends test1DeleteArgs>(args: SelectSubset<T, test1DeleteArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Order.
-     * @param {OrderUpdateArgs} args - Arguments to update one Order.
+     * Update one Test1.
+     * @param {test1UpdateArgs} args - Arguments to update one Test1.
      * @example
-     * // Update one Order
-     * const order = await prisma.order.update({
+     * // Update one Test1
+     * const test1 = await prisma.test1.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1266,30 +1250,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends OrderUpdateArgs>(args: SelectSubset<T, OrderUpdateArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends test1UpdateArgs>(args: SelectSubset<T, test1UpdateArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Orders.
-     * @param {OrderDeleteManyArgs} args - Arguments to filter Orders to delete.
+     * Delete zero or more Test1s.
+     * @param {test1DeleteManyArgs} args - Arguments to filter Test1s to delete.
      * @example
-     * // Delete a few Orders
-     * const { count } = await prisma.order.deleteMany({
+     * // Delete a few Test1s
+     * const { count } = await prisma.test1.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends OrderDeleteManyArgs>(args?: SelectSubset<T, OrderDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends test1DeleteManyArgs>(args?: SelectSubset<T, test1DeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Orders.
+     * Update zero or more Test1s.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrderUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {test1UpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Orders
-     * const order = await prisma.order.updateMany({
+     * // Update many Test1s
+     * const test1 = await prisma.test1.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1299,14 +1283,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends OrderUpdateManyArgs>(args: SelectSubset<T, OrderUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends test1UpdateManyArgs>(args: SelectSubset<T, test1UpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Orders and returns the data updated in the database.
-     * @param {OrderUpdateManyAndReturnArgs} args - Arguments to update many Orders.
+     * Update zero or more Test1s and returns the data updated in the database.
+     * @param {test1UpdateManyAndReturnArgs} args - Arguments to update many Test1s.
      * @example
-     * // Update many Orders
-     * const order = await prisma.order.updateManyAndReturn({
+     * // Update many Test1s
+     * const test1 = await prisma.test1.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1315,8 +1299,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Orders and only return the `id`
-     * const orderWithIdOnly = await prisma.order.updateManyAndReturn({
+     * // Update zero or more Test1s and only return the `id`
+     * const test1WithIdOnly = await prisma.test1.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -1329,56 +1313,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends OrderUpdateManyAndReturnArgs>(args: SelectSubset<T, OrderUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends test1UpdateManyAndReturnArgs>(args: SelectSubset<T, test1UpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Order.
-     * @param {OrderUpsertArgs} args - Arguments to update or create a Order.
+     * Create or update one Test1.
+     * @param {test1UpsertArgs} args - Arguments to update or create a Test1.
      * @example
-     * // Update or create a Order
-     * const order = await prisma.order.upsert({
+     * // Update or create a Test1
+     * const test1 = await prisma.test1.upsert({
      *   create: {
-     *     // ... data to create a Order
+     *     // ... data to create a Test1
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Order we want to update
+     *     // ... the filter for the Test1 we want to update
      *   }
      * })
      */
-    upsert<T extends OrderUpsertArgs>(args: SelectSubset<T, OrderUpsertArgs<ExtArgs>>): Prisma__OrderClient<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends test1UpsertArgs>(args: SelectSubset<T, test1UpsertArgs<ExtArgs>>): Prisma__test1Client<$Result.GetResult<Prisma.$test1Payload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Orders.
+     * Count the number of Test1s.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrderCountArgs} args - Arguments to filter Orders to count.
+     * @param {test1CountArgs} args - Arguments to filter Test1s to count.
      * @example
-     * // Count the number of Orders
-     * const count = await prisma.order.count({
+     * // Count the number of Test1s
+     * const count = await prisma.test1.count({
      *   where: {
-     *     // ... the filter for the Orders we want to count
+     *     // ... the filter for the Test1s we want to count
      *   }
      * })
     **/
-    count<T extends OrderCountArgs>(
-      args?: Subset<T, OrderCountArgs>,
+    count<T extends test1CountArgs>(
+      args?: Subset<T, test1CountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], OrderCountAggregateOutputType>
+          : GetScalarType<T['select'], Test1CountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Order.
+     * Allows you to perform aggregations operations on a Test1.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrderAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {Test1AggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -1398,13 +1382,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends OrderAggregateArgs>(args: Subset<T, OrderAggregateArgs>): Prisma.PrismaPromise<GetOrderAggregateType<T>>
+    aggregate<T extends Test1AggregateArgs>(args: Subset<T, Test1AggregateArgs>): Prisma.PrismaPromise<GetTest1AggregateType<T>>
 
     /**
-     * Group by Order.
+     * Group by Test1.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {OrderGroupByArgs} args - Group by arguments.
+     * @param {test1GroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1419,14 +1403,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends OrderGroupByArgs,
+      T extends test1GroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: OrderGroupByArgs['orderBy'] }
-        : { orderBy?: OrderGroupByArgs['orderBy'] },
+        ? { orderBy: test1GroupByArgs['orderBy'] }
+        : { orderBy?: test1GroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1475,20 +1459,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, OrderGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrderGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, test1GroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTest1GroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Order model
+   * Fields of the test1 model
    */
-  readonly fields: OrderFieldRefs;
+  readonly fields: test1FieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Order.
+   * The delegate class that acts as a "Promise-like" for test1.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__OrderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__test1Client<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1516,376 +1500,375 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Order model
+   * Fields of the test1 model
    */
-  interface OrderFieldRefs {
-    readonly id: FieldRef<"Order", 'Int'>
-    readonly itemName: FieldRef<"Order", 'String'>
-    readonly quantity: FieldRef<"Order", 'Int'>
-    readonly createdAt: FieldRef<"Order", 'DateTime'>
+  interface test1FieldRefs {
+    readonly id: FieldRef<"test1", 'Int'>
+    readonly name: FieldRef<"test1", 'String'>
+    readonly createdAt: FieldRef<"test1", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Order findUnique
+   * test1 findUnique
    */
-  export type OrderFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1FindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * Filter, which Order to fetch.
+     * Filter, which test1 to fetch.
      */
-    where: OrderWhereUniqueInput
+    where: test1WhereUniqueInput
   }
 
   /**
-   * Order findUniqueOrThrow
+   * test1 findUniqueOrThrow
    */
-  export type OrderFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1FindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * Filter, which Order to fetch.
+     * Filter, which test1 to fetch.
      */
-    where: OrderWhereUniqueInput
+    where: test1WhereUniqueInput
   }
 
   /**
-   * Order findFirst
+   * test1 findFirst
    */
-  export type OrderFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1FindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * Filter, which Order to fetch.
+     * Filter, which test1 to fetch.
      */
-    where?: OrderWhereInput
+    where?: test1WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Orders to fetch.
+     * Determine the order of test1s to fetch.
      */
-    orderBy?: OrderOrderByWithRelationInput | OrderOrderByWithRelationInput[]
+    orderBy?: test1OrderByWithRelationInput | test1OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Orders.
+     * Sets the position for searching for test1s.
      */
-    cursor?: OrderWhereUniqueInput
+    cursor?: test1WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Orders from the position of the cursor.
+     * Take `±n` test1s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Orders.
+     * Skip the first `n` test1s.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Orders.
+     * Filter by unique combinations of test1s.
      */
-    distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
+    distinct?: Test1ScalarFieldEnum | Test1ScalarFieldEnum[]
   }
 
   /**
-   * Order findFirstOrThrow
+   * test1 findFirstOrThrow
    */
-  export type OrderFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1FindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * Filter, which Order to fetch.
+     * Filter, which test1 to fetch.
      */
-    where?: OrderWhereInput
+    where?: test1WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Orders to fetch.
+     * Determine the order of test1s to fetch.
      */
-    orderBy?: OrderOrderByWithRelationInput | OrderOrderByWithRelationInput[]
+    orderBy?: test1OrderByWithRelationInput | test1OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Orders.
+     * Sets the position for searching for test1s.
      */
-    cursor?: OrderWhereUniqueInput
+    cursor?: test1WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Orders from the position of the cursor.
+     * Take `±n` test1s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Orders.
+     * Skip the first `n` test1s.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Orders.
+     * Filter by unique combinations of test1s.
      */
-    distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
+    distinct?: Test1ScalarFieldEnum | Test1ScalarFieldEnum[]
   }
 
   /**
-   * Order findMany
+   * test1 findMany
    */
-  export type OrderFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1FindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * Filter, which Orders to fetch.
+     * Filter, which test1s to fetch.
      */
-    where?: OrderWhereInput
+    where?: test1WhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Orders to fetch.
+     * Determine the order of test1s to fetch.
      */
-    orderBy?: OrderOrderByWithRelationInput | OrderOrderByWithRelationInput[]
+    orderBy?: test1OrderByWithRelationInput | test1OrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Orders.
+     * Sets the position for listing test1s.
      */
-    cursor?: OrderWhereUniqueInput
+    cursor?: test1WhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Orders from the position of the cursor.
+     * Take `±n` test1s from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Orders.
+     * Skip the first `n` test1s.
      */
     skip?: number
-    distinct?: OrderScalarFieldEnum | OrderScalarFieldEnum[]
+    distinct?: Test1ScalarFieldEnum | Test1ScalarFieldEnum[]
   }
 
   /**
-   * Order create
+   * test1 create
    */
-  export type OrderCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1CreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * The data needed to create a Order.
+     * The data needed to create a test1.
      */
-    data: XOR<OrderCreateInput, OrderUncheckedCreateInput>
+    data: XOR<test1CreateInput, test1UncheckedCreateInput>
   }
 
   /**
-   * Order createMany
+   * test1 createMany
    */
-  export type OrderCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1CreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Orders.
+     * The data used to create many test1s.
      */
-    data: OrderCreateManyInput | OrderCreateManyInput[]
+    data: test1CreateManyInput | test1CreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Order createManyAndReturn
+   * test1 createManyAndReturn
    */
-  export type OrderCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1CreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelectCreateManyAndReturn<ExtArgs> | null
+    select?: test1SelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * The data used to create many Orders.
+     * The data used to create many test1s.
      */
-    data: OrderCreateManyInput | OrderCreateManyInput[]
+    data: test1CreateManyInput | test1CreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Order update
+   * test1 update
    */
-  export type OrderUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1UpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * The data needed to update a Order.
+     * The data needed to update a test1.
      */
-    data: XOR<OrderUpdateInput, OrderUncheckedUpdateInput>
+    data: XOR<test1UpdateInput, test1UncheckedUpdateInput>
     /**
-     * Choose, which Order to update.
+     * Choose, which test1 to update.
      */
-    where: OrderWhereUniqueInput
+    where: test1WhereUniqueInput
   }
 
   /**
-   * Order updateMany
+   * test1 updateMany
    */
-  export type OrderUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1UpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Orders.
+     * The data used to update test1s.
      */
-    data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyInput>
+    data: XOR<test1UpdateManyMutationInput, test1UncheckedUpdateManyInput>
     /**
-     * Filter which Orders to update
+     * Filter which test1s to update
      */
-    where?: OrderWhereInput
+    where?: test1WhereInput
     /**
-     * Limit how many Orders to update.
+     * Limit how many test1s to update.
      */
     limit?: number
   }
 
   /**
-   * Order updateManyAndReturn
+   * test1 updateManyAndReturn
    */
-  export type OrderUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1UpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: test1SelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * The data used to update Orders.
+     * The data used to update test1s.
      */
-    data: XOR<OrderUpdateManyMutationInput, OrderUncheckedUpdateManyInput>
+    data: XOR<test1UpdateManyMutationInput, test1UncheckedUpdateManyInput>
     /**
-     * Filter which Orders to update
+     * Filter which test1s to update
      */
-    where?: OrderWhereInput
+    where?: test1WhereInput
     /**
-     * Limit how many Orders to update.
+     * Limit how many test1s to update.
      */
     limit?: number
   }
 
   /**
-   * Order upsert
+   * test1 upsert
    */
-  export type OrderUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1UpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * The filter to search for the Order to update in case it exists.
+     * The filter to search for the test1 to update in case it exists.
      */
-    where: OrderWhereUniqueInput
+    where: test1WhereUniqueInput
     /**
-     * In case the Order found by the `where` argument doesn't exist, create a new Order with this data.
+     * In case the test1 found by the `where` argument doesn't exist, create a new test1 with this data.
      */
-    create: XOR<OrderCreateInput, OrderUncheckedCreateInput>
+    create: XOR<test1CreateInput, test1UncheckedCreateInput>
     /**
-     * In case the Order was found with the provided `where` argument, update it with this data.
+     * In case the test1 was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<OrderUpdateInput, OrderUncheckedUpdateInput>
+    update: XOR<test1UpdateInput, test1UncheckedUpdateInput>
   }
 
   /**
-   * Order delete
+   * test1 delete
    */
-  export type OrderDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1DeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
     /**
-     * Filter which Order to delete.
+     * Filter which test1 to delete.
      */
-    where: OrderWhereUniqueInput
+    where: test1WhereUniqueInput
   }
 
   /**
-   * Order deleteMany
+   * test1 deleteMany
    */
-  export type OrderDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1DeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Orders to delete
+     * Filter which test1s to delete
      */
-    where?: OrderWhereInput
+    where?: test1WhereInput
     /**
-     * Limit how many Orders to delete.
+     * Limit how many test1s to delete.
      */
     limit?: number
   }
 
   /**
-   * Order without action
+   * test1 without action
    */
-  export type OrderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type test1DefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Order
+     * Select specific fields to fetch from the test1
      */
-    select?: OrderSelect<ExtArgs> | null
+    select?: test1Select<ExtArgs> | null
     /**
-     * Omit specific fields from the Order
+     * Omit specific fields from the test1
      */
-    omit?: OrderOmit<ExtArgs> | null
+    omit?: test1Omit<ExtArgs> | null
   }
 
 
@@ -1903,14 +1886,13 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const OrderScalarFieldEnum: {
+  export const Test1ScalarFieldEnum: {
     id: 'id',
-    itemName: 'itemName',
-    quantity: 'quantity',
+    name: 'name',
     createdAt: 'createdAt'
   };
 
-  export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
+  export type Test1ScalarFieldEnum = (typeof Test1ScalarFieldEnum)[keyof typeof Test1ScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1993,98 +1975,86 @@ export namespace Prisma {
    */
 
 
-  export type OrderWhereInput = {
-    AND?: OrderWhereInput | OrderWhereInput[]
-    OR?: OrderWhereInput[]
-    NOT?: OrderWhereInput | OrderWhereInput[]
-    id?: IntFilter<"Order"> | number
-    itemName?: StringFilter<"Order"> | string
-    quantity?: IntFilter<"Order"> | number
-    createdAt?: DateTimeFilter<"Order"> | Date | string
+  export type test1WhereInput = {
+    AND?: test1WhereInput | test1WhereInput[]
+    OR?: test1WhereInput[]
+    NOT?: test1WhereInput | test1WhereInput[]
+    id?: IntFilter<"test1"> | number
+    name?: StringFilter<"test1"> | string
+    createdAt?: DateTimeFilter<"test1"> | Date | string
   }
 
-  export type OrderOrderByWithRelationInput = {
+  export type test1OrderByWithRelationInput = {
     id?: SortOrder
-    itemName?: SortOrder
-    quantity?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type OrderWhereUniqueInput = Prisma.AtLeast<{
+  export type test1WhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: OrderWhereInput | OrderWhereInput[]
-    OR?: OrderWhereInput[]
-    NOT?: OrderWhereInput | OrderWhereInput[]
-    itemName?: StringFilter<"Order"> | string
-    quantity?: IntFilter<"Order"> | number
-    createdAt?: DateTimeFilter<"Order"> | Date | string
+    AND?: test1WhereInput | test1WhereInput[]
+    OR?: test1WhereInput[]
+    NOT?: test1WhereInput | test1WhereInput[]
+    name?: StringFilter<"test1"> | string
+    createdAt?: DateTimeFilter<"test1"> | Date | string
   }, "id">
 
-  export type OrderOrderByWithAggregationInput = {
+  export type test1OrderByWithAggregationInput = {
     id?: SortOrder
-    itemName?: SortOrder
-    quantity?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
-    _count?: OrderCountOrderByAggregateInput
-    _avg?: OrderAvgOrderByAggregateInput
-    _max?: OrderMaxOrderByAggregateInput
-    _min?: OrderMinOrderByAggregateInput
-    _sum?: OrderSumOrderByAggregateInput
+    _count?: test1CountOrderByAggregateInput
+    _avg?: test1AvgOrderByAggregateInput
+    _max?: test1MaxOrderByAggregateInput
+    _min?: test1MinOrderByAggregateInput
+    _sum?: test1SumOrderByAggregateInput
   }
 
-  export type OrderScalarWhereWithAggregatesInput = {
-    AND?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
-    OR?: OrderScalarWhereWithAggregatesInput[]
-    NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Order"> | number
-    itemName?: StringWithAggregatesFilter<"Order"> | string
-    quantity?: IntWithAggregatesFilter<"Order"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
+  export type test1ScalarWhereWithAggregatesInput = {
+    AND?: test1ScalarWhereWithAggregatesInput | test1ScalarWhereWithAggregatesInput[]
+    OR?: test1ScalarWhereWithAggregatesInput[]
+    NOT?: test1ScalarWhereWithAggregatesInput | test1ScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"test1"> | number
+    name?: StringWithAggregatesFilter<"test1"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"test1"> | Date | string
   }
 
-  export type OrderCreateInput = {
-    itemName: string
-    quantity: number
+  export type test1CreateInput = {
+    name: string
     createdAt?: Date | string
   }
 
-  export type OrderUncheckedCreateInput = {
+  export type test1UncheckedCreateInput = {
     id?: number
-    itemName: string
-    quantity: number
+    name: string
     createdAt?: Date | string
   }
 
-  export type OrderUpdateInput = {
-    itemName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
+  export type test1UpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OrderUncheckedUpdateInput = {
+  export type test1UncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OrderCreateManyInput = {
+  export type test1CreateManyInput = {
     id?: number
-    itemName: string
-    quantity: number
+    name: string
     createdAt?: Date | string
   }
 
-  export type OrderUpdateManyMutationInput = {
-    itemName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
+  export type test1UpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type OrderUncheckedUpdateManyInput = {
+  export type test1UncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    itemName?: StringFieldUpdateOperationsInput | string
-    quantity?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2125,35 +2095,30 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type OrderCountOrderByAggregateInput = {
+  export type test1CountOrderByAggregateInput = {
     id?: SortOrder
-    itemName?: SortOrder
-    quantity?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type OrderAvgOrderByAggregateInput = {
+  export type test1AvgOrderByAggregateInput = {
     id?: SortOrder
-    quantity?: SortOrder
   }
 
-  export type OrderMaxOrderByAggregateInput = {
+  export type test1MaxOrderByAggregateInput = {
     id?: SortOrder
-    itemName?: SortOrder
-    quantity?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type OrderMinOrderByAggregateInput = {
+  export type test1MinOrderByAggregateInput = {
     id?: SortOrder
-    itemName?: SortOrder
-    quantity?: SortOrder
+    name?: SortOrder
     createdAt?: SortOrder
   }
 
-  export type OrderSumOrderByAggregateInput = {
+  export type test1SumOrderByAggregateInput = {
     id?: SortOrder
-    quantity?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -2208,16 +2173,16 @@ export namespace Prisma {
     set?: string
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
