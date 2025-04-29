@@ -2,6 +2,8 @@ import prisma from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
+    console.log("❗️ [ENV] DATABASE_URL =", process.env.DATABASE_URL);
+    console.log("❗️ [ENV] DATABASE_PRISMA_URL =", process.env.DATABASE_PRISMA_URL);
     const name = await prisma.test1.findMany();
     return NextResponse.json(name);
 }
