@@ -1,0 +1,2 @@
+# Prisma client 自動生成ファイルを除外
+app/generated/prisma
