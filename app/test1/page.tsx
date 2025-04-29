@@ -59,6 +59,8 @@ export default function Test1Page() {
     return <p>{error}</p>;
   }
 
+  console.log("❗️ Server render /test1");
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Test1 一覧</h1>
