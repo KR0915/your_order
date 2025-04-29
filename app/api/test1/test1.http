@@ -1,0 +1,32 @@
+### GET all items
+GET http://localhost:3000/api/test1
+
+###
+
+### POST a new item
+POST http://localhost:3000/api/test1
+Content-Type: application/json
+
+{
+    "name": "Test Item"
+}
+
+###
+
+### GET a specific item by ID
+GET http://localhost:3000/api/test1/1
+
+###
+
+### PUT (update) a specific item by ID
+PUT http://localhost:3000/api/test1/1
+Content-Type: application/json
+
+{
+    "name": "Updated Test Item"
+}
+
+###
+
+### DELETE a specific item by ID
+DELETE http://localhost:3000/api/test1/1
