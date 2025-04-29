@@ -1,6 +1,6 @@
 import { Test1 } from "@/app/types";
 
-const BASE_URL = "http://localhost:3000/api/test1";
+const BASE_URL = "/api/test1";
 
 // GET: 全てのデータを取得
 export async function getAllTest1(): Promise<Test1[]> {
