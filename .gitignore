@@ -25,9 +25,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env
-.env.*
+
+# local env files — ignore all env files, track only the sample
+.env*
 !.env.example
 
 # vercel
