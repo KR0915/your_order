@@ -18,3 +18,9 @@ model test1 {
   name      String
   createdAt DateTime @default(now())
 }
+
+model test2 {
+  id        Int      @id @default(autoincrement())
+  name      String
+  createdAt DateTime @default(now())
+}
