@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export interface Option { id: number; text: string; }
 export interface Question { id: number; text: string; options: Option[] }
@@ -22,6 +23,13 @@ export default function QuestionFlowPage() {
   const [animStage, setAnimStage] = useState<AnimStage>(null);
   const [key, setKey] = useState(0);
   const [finalNumber, setFinalNumber] = useState<number | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (finalNumber !== null) {
+      router.push(`/question-flow/${finalNumber}`);
+    }
+  }, [finalNumber, router]);
 
   const question = questions.find(q => q.id === currentId);
   if (!question) return <div className="p-8 text-center text-orange-500">質問がありません。</div>;
@@ -48,19 +56,6 @@ export default function QuestionFlowPage() {
       }
     }, 800);
   };
-
-  // 最後に番号を表示
-  if (finalNumber !== null) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-orange-100 via-orange-200 to-orange-300 flex items-center justify-center p-6">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-6 text-center">
-          <h2 className="text-2xl font-semibold text-orange-600 mb-4">あなたの番号は</h2>
-          <p className="text-5xl font-bold text-orange-700 mb-4">{finalNumber}</p>
-          <p className="text-gray-500">（全64通り中の{finalNumber}番目）</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-100 via-orange-200 to-orange-300 flex items-center justify-center overflow-hidden">
