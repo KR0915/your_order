@@ -1,6 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "./components/header";
+
 
 // ローカルフォント設定
 const geistSans = localFont({
@@ -8,7 +11,6 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
-
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -29,7 +31,6 @@ export const metadata: Metadata = {
   },
 };
 
-// ✅ エラー回避：props に型を指定して children を確実に受け取る
 export default function RootLayout({
   children,
 }: {
@@ -37,11 +38,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={`background-image ${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="overlay" />
-        <div className="content">
-          {children}
-        </div>
+      <body
+        className={`background-image ${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <Header />
+        <main className="pt-10 relative">
+          <div className="overlay fixed inset-0 bg-black opacity-20 pointer-events-none" />
+          <div className="content relative z-10">{children}</div>
+        </main>
       </body>
     </html>
   );
