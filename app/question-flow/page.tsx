@@ -58,7 +58,7 @@ export default function QuestionFlowPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-100 via-orange-200 to-orange-300 flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center overflow-hidden">
       <div
         key={key}
         className={`max-w-md w-full bg-white rounded-2xl shadow-lg p-6 relative border-2 border-orange-300 transition-transform ease-in-out ${
