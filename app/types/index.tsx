@@ -9,3 +9,4 @@ export interface Test2 {
     name: string; // 名前
     createdAt: Date; // 作成日時
 }
+
