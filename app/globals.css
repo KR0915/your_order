@@ -2,26 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* リセットと背景画像設定 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body.background-image {
+  background-image: url("/images/bg1.jpg"); /* 適切なパスに変更 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* 背景に重ねる半透明レイヤー */
+.overlay {
+  position: fixed; /* ← fixed にすることで常に画面全体を覆う */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 239, 239, 0.5);
+  z-index: 0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* アプリのコンテンツに重なって表示されないようにする */
+.content {
+  position: relative;
+  z-index: 1;
 }
