@@ -1,0 +1,5 @@
+GET /api/consumption/2025-06-20 HTTP/1.1
+Host: localhost:3000
+Cookie: auth_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImVtYWlsIjoia2lrdXJlbjFzdEBnbWFpbC5jb20iLCJpYXQiOjE3NTEwMTg5OTIsImV4cCI6MTc1MTEwNTM5Mn0.JLN55iASYhPfOsKzJmXTM_2Oz6YC53fl4EuBvwXEyIc
+Accept: application/json
+

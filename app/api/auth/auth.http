@@ -1,0 +1,26 @@
+### POST a new User
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "sato",
+  "email": "sato3@example.com",
+  "targetCal": 1800,
+  "password": "password123"
+}
+
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "sato3@example.com",
+  "password": "password123"
+}
+
+### Logout via POST
+POST http://localhost:3000/api/auth/logout
+Accept: application/json
+
+### Get user profile
+GET http://localhost:3000/api/user/profile
