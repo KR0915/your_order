@@ -1,0 +1,27 @@
+GET /api/user/profile HTTP/1.1
+Host: localhost:3000
+Cookie: auth_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJlbWFpbCI6InRhcm8ueWFtYWRhQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUyMjI4MjE4LCJleHAiOjE3NTIzMTQ2MTh9.Q25ROiJXTfzNGPZhNtDtIr85figed6Pe0PcxVDoAKE8
+Accept: application/json
+### Get user profile
+
+PUT /api/user/profile HTTP/1.1
+Host: localhost:3000
+Cookie: auth_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwLCJlbWFpbCI6InRhcm8ueWFtYWRhQGV4YW1wbGUuY29tIiwiaWF0IjoxNzUyMjI1ODc5LCJleHAiOjE3NTIzMTIyNzl9.gu80METapZwNfYNDYl6p92b3FfdtAjV8bnJz67OXWpk
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "山田太郎2",
+  "email": "taro.yamada@example.com",
+  "targetCal": 2200
+}
+#### Update user profile
+
+DELETE /api/user/profile HTTP/1.1
+Host: localhost:3000
+Cookie: auth_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImVtYWlsIjoic2F0bzNAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTIyMjc0NDYsImV4cCI6MTc1MjMxMzg0Nn0.7XS2_HMrrXeUJiZl2S0ugDFZOa1QfCl_h-pkEoNkifM
+### Delete user profile
+
+{
+  "message": "User profile deleted successfully"
+}
