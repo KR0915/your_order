@@ -13,7 +13,6 @@ export default function Home() {
     const timer = setTimeout(() => {
       setShow(true);
       setAnimate(false);
-      // ボタン表示後さらに1.2秒後にパルス開始
       setTimeout(() => setPulse(true), 1200);
     }, 1000);
     return () => clearTimeout(timer);
@@ -28,18 +27,23 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center">
         <h1
           className={
-            "text-5xl sm:text-6xl font-extrabold mb-8 text-orange-500" +
+            "text-[3.5rem] sm:text-[5rem] font-black leading-[1.05] mb-4 text-white" +
             (animate || show ? " animate-title-x " : "")
           }
-          style={{ minHeight: "4.5rem" }}
+          style={{
+            minHeight: "5rem",
+            WebkitTextStroke: "3px #fff",
+            color: "transparent",
+            WebkitTextFillColor: "#fff",
+          }}
         >
-          Your Orderにようこそ
+          Your Order
         </h1>
         {show && (
           <button
             onClick={handleClick}
             className={
-              "mt-12 px-8 py-3 rounded-full bg-orange-500 text-white font-bold text-xl shadow-lg transition hover:scale-105" +
+              "mt-6 px-8 py-3 rounded-full bg-orange-500 text-white font-black text-xl shadow-lg transition hover:scale-105" +
               (animate || show ? " animate-title-x " : "") +
               (pulse && !animate ? " animate-pulse-custom" : "")
             }
