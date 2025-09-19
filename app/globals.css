@@ -7,6 +7,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden;
 }
 
 body.background-image {
@@ -15,7 +16,6 @@ body.background-image {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  overflow: hidden;
 }
 
 
