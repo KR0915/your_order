@@ -1,4 +1,4 @@
-
+// ✅ app/api/gemini/route.ts (API Route側)
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 
