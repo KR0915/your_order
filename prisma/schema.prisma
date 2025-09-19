@@ -32,13 +32,18 @@ model Recipe {
 }
 
 model User {
-  id           Int           @id @default(autoincrement())
-  name         String
-  email        String        @unique
+  id             Int           @id @default(autoincrement())
+  name           String
+  email          String        @unique
   hashedPassword String? 
-  targetCal    Int
-  createdAt    DateTime      @default(now())
-  consumptions Consumption[]
+  targetCal      Int
+  targetProtein  Float?        // 目標タンパク質 (g/日)
+  targetFat      Float?        // 目標脂質 (g/日)
+  targetCarbs    Float?        // 目標炭水化物 (g/日)
+  dislikedFoods  String[]      // 苦手な食べ物（配列）
+  allergens      String[]      // アレルギー食品（配列）
+  createdAt      DateTime      @default(now())
+  consumptions   Consumption[]
 }
 
 model Consumption {

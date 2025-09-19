@@ -23,6 +23,11 @@ export interface User {
   name: string;
   email: string;
   targetCal: number;
+  targetProtein?: number;    // 目標タンパク質 (g/日)
+  targetFat?: number;        // 目標脂質 (g/日)
+  targetCarbs?: number;      // 目標炭水化物 (g/日)
+  dislikedFoods?: string[];  // 苦手な食べ物
+  allergens?: string[];      // アレルギー食品
   createdAt: Date;
 }
 
