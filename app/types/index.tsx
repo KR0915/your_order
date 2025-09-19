@@ -78,10 +78,64 @@ export interface Recipe {
   combo: string;    // "1,2,5,6,9,10" のようなキー
   name: string;     // recipeMap[combo] で取り出せる料理名
   createdAt: Date;
+  calorie?: number | null; // カロリー
+  protein?: number | null; // タンパク質 (g)
+  fat?: number | null;     // 脂質 (g)  
+  carbs?: number | null;   // 炭水化物 (g)
 }
 
 // 日付ごとの食事一覧＋合計カロリー取得用レスポンス
 export interface DailyConsumptionResponse {
   records: Array<ConsumptionRecord & { recipe: Recipe }>;
   totalCalories: number;
+}
+
+// PFCダッシュボード用の型定義
+export interface DailyPFCData {
+  date: string;
+  totalCalories: number;
+  totalProtein: number;
+  totalFat: number;
+  totalCarbs: number;
+  meals: Array<{
+    id: number;
+    recipeName: string;
+    quantity: number;
+    calories: number;
+    protein: number;
+    fat: number;
+    carbs: number;
+    consumedAt: Date;
+  }>;
+}
+
+export interface MonthlyPFCData {
+  month: string;
+  totalCalories: number;
+  totalProtein: number;
+  totalFat: number;
+  totalCarbs: number;
+  dayCount: number;
+  averageCalories: number;
+  averageProtein: number;
+  averageFat: number;
+  averageCarbs: number;
+}
+
+export interface PFCDashboardResponse {
+  viewType: 'daily' | 'monthly';
+  data: DailyPFCData[] | MonthlyPFCData[];
+  summary?: {
+    totalDays: number;
+    averageCalories: number;
+    averageProtein: number;
+    averageFat: number;
+    averageCarbs: number;
+  };
+  userInfo: {
+    id: number;
+    name: string;
+    targetCal: number;
+    email: string;
+  };
 }

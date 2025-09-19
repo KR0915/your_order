@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Recipe" ADD COLUMN     "carbs" DOUBLE PRECISION,
+ADD COLUMN     "fat" DOUBLE PRECISION,
+ADD COLUMN     "protein" DOUBLE PRECISION;

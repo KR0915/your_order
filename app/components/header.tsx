@@ -43,8 +43,8 @@ export default function Header() {
               <Link href="/map" className="text-gray-200 hover:text-blue-300 hover:underline transition-colors">
                 レストランマップ
               </Link>
-              <Link href="/overview/monthly" className="text-gray-200 hover:text-blue-300 hover:underline transition-colors">
-                今月のカロリー
+              <Link href="/pfc-dashboard" className="text-gray-200 hover:text-blue-300 hover:underline transition-colors">
+                PFCバランス
               </Link>
               <Link href="/user/profile" className="text-gray-200 hover:text-blue-300 hover:underline transition-colors">
                 プロフィール

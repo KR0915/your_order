@@ -42,9 +42,8 @@ export default function RootLayout({
         className={`background-image ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <main className="pt-10 relative">
-          <div className="overlay fixed inset-0 bg-black opacity-20 pointer-events-none" />
-          <div className="content relative z-10">{children}</div>
+        <main className="relative">
+          <div className="content relative z-10 min-h-screen">{children}</div>
         </main>
       </body>
     </html>
