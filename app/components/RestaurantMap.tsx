@@ -87,11 +87,25 @@ export default function RestaurantMap({ restaurants, userLocation }: RestaurantM
       )}
       
       {/* レストランマーカー */}
-      {restaurants.map((restaurant) => (
+      {restaurants.filter(restaurant => {
+        // 有効なレストランデータのみを表示
+        const isValid = restaurant && 
+          restaurant.name && 
+          typeof restaurant.latitude === 'number' && 
+          typeof restaurant.longitude === 'number' &&
+          !isNaN(restaurant.latitude) &&
+          !isNaN(restaurant.longitude);
+        
+        if (!isValid) {
+          console.warn('Invalid restaurant data for map marker:', restaurant);
+        }
+        
+        return isValid;
+      }).map((restaurant) => (
         <Marker
           key={restaurant.id}
           position={[restaurant.latitude, restaurant.longitude]}
-          icon={getRestaurantIcon(restaurant.cuisine)}
+          icon={getRestaurantIcon(restaurant.cuisine || 'default')}
         >
           <Popup className="custom-popup">
             <div className="p-2 min-w-48">
@@ -102,18 +116,18 @@ export default function RestaurantMap({ restaurants, userLocation }: RestaurantM
                 <p>
                   <span className="font-medium text-gray-600">料理:</span> 
                   <span className="ml-1 bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
-                    {restaurant.cuisine}
+                    {restaurant.cuisine || '各国料理'}
                   </span>
                 </p>
                 <p className="flex items-center">
                   <span className="font-medium text-gray-600">評価:</span>
                   <span className="ml-1 flex items-center">
                     {Array.from({ length: 5 }, (_, i) => (
-                      <span key={i} className={i < Math.floor(restaurant.rating) ? "text-yellow-400" : "text-gray-300"}>
+                      <span key={i} className={i < Math.floor(restaurant.rating || 4.0) ? "text-yellow-400" : "text-gray-300"}>
                         ⭐
                       </span>
                     ))}
-                    <span className="ml-1 text-xs text-gray-500">({restaurant.rating})</span>
+                    <span className="ml-1 text-xs text-gray-500">({restaurant.rating || 4.0})</span>
                   </span>
                 </p>
                 {restaurant.address && (

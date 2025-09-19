@@ -38,6 +38,7 @@ export default function MapPage() {
 
   // 初期レストラン取得
   useEffect(() => {
+    console.log("Initial load with dishName:", dishName); // デバッグ用
     if (dishName) {
       // 料理名が指定されている場合
       loadRestaurantsByDish(dishName);
@@ -50,10 +51,14 @@ export default function MapPage() {
   const loadRestaurants = async (mood: string) => {
     setLoading(true);
     try {
+      console.log("Loading restaurants for mood:", mood); // デバッグ用
       const restaurantData = await getRestaurantsByMood(mood);
+      console.log("Received restaurant data:", restaurantData); // デバッグ用
       setRestaurants(restaurantData);
     } catch (error) {
       console.error('レストラン取得エラー:', error);
+      // エラー時もフォールバックデータを表示
+      setRestaurants([]);
     } finally {
       setLoading(false);
     }
@@ -62,10 +67,14 @@ export default function MapPage() {
   const loadRestaurantsByDish = async (dish: string) => {
     setLoading(true);
     try {
+      console.log("Loading restaurants for dish:", dish); // デバッグ用
       const restaurantData = await getRestaurantsByDish(dish);
+      console.log("Received restaurant data:", restaurantData); // デバッグ用
       setRestaurants(restaurantData);
     } catch (error) {
       console.error('レストラン取得エラー:', error);
+      // エラー時もフォールバックデータを表示
+      setRestaurants([]);
     } finally {
       setLoading(false);
     }
@@ -140,42 +149,63 @@ export default function MapPage() {
                 <div className="text-center py-8 text-gray-500">
                   <div className="text-2xl mb-2">🔍</div>
                   <p className="text-sm font-medium mb-1">レストランが見つかりませんでした</p>
-                  <p className="text-xs">
+                  <p className="text-xs mb-2">
                     {dishName ? '別の料理を試してみてください' : '気分を選択してレストランを探してみてください'}
                   </p>
+                  {process.env.NODE_ENV === 'development' && (
+                    <div className="text-xs text-gray-400 mt-2">
+                      <p>デバッグ情報:</p>
+                      <p>dishName: {dishName || 'なし'}</p>
+                      <p>selectedMood: {selectedMood || 'なし'}</p>
+                      <p>userLocation: {userLocation ? `${userLocation.lat}, ${userLocation.lng}` : 'なし'}</p>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {restaurants.map((restaurant) => (
-                    <div 
-                      key={restaurant.id} 
-                      className="bg-white rounded-lg shadow-sm p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
-                      onClick={() => setSelectedRestaurant(restaurant)}
-                    >
-                      <h4 className="font-semibold text-gray-800 text-sm mb-2">{restaurant.name}</h4>
-                      <div className="space-y-1 text-xs text-gray-600">
-                        <div className="flex items-center justify-between">
-                          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
-                            {restaurant.cuisine}
-                          </span>
-                          <div className="flex items-center">
-                            <span className="text-yellow-500 mr-1">⭐</span>
-                            <span className="font-medium text-xs">{restaurant.rating}</span>
+                  {restaurants.map((restaurant, index) => {
+                    // レストランデータの検証
+                    const isValidRestaurant = restaurant && 
+                      restaurant.name && 
+                      typeof restaurant.latitude === 'number' && 
+                      typeof restaurant.longitude === 'number';
+                    
+                    if (!isValidRestaurant) {
+                      console.warn(`Invalid restaurant data at index ${index}:`, restaurant);
+                      return null;
+                    }
+                    
+                    return (
+                      <div 
+                        key={restaurant.id || index} 
+                        className="bg-white rounded-lg shadow-sm p-3 border border-gray-200 hover:shadow-md transition-shadow cursor-pointer"
+                        onClick={() => setSelectedRestaurant(restaurant)}
+                      >
+                        <h4 className="font-semibold text-gray-800 text-sm mb-2">{restaurant.name}</h4>
+                        <div className="space-y-1 text-xs text-gray-600">
+                          <div className="flex items-center justify-between">
+                            <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-medium">
+                              {restaurant.cuisine || '各国料理'}
+                            </span>
+                            <div className="flex items-center">
+                              <span className="text-yellow-500 mr-1">⭐</span>
+                              <span className="font-medium text-xs">{restaurant.rating || 4.0}</span>
+                            </div>
                           </div>
+                          {restaurant.address && (
+                            <p className="text-gray-600 text-xs">
+                              📍 {restaurant.address}
+                            </p>
+                          )}
+                          {restaurant.description && (
+                            <p className="text-gray-500 text-xs italic mt-1">
+                              {restaurant.description}
+                            </p>
+                          )}
                         </div>
-                        {restaurant.address && (
-                          <p className="text-gray-600 text-xs">
-                            📍 {restaurant.address}
-                          </p>
-                        )}
-                        {restaurant.description && (
-                          <p className="text-gray-500 text-xs italic mt-1">
-                            {restaurant.description}
-                          </p>
-                        )}
                       </div>
-                    </div>
-                  ))}
+                    );
+                  }).filter(Boolean)}
                 </div>
               )}
             </div>
