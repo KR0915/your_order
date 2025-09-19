@@ -13,7 +13,17 @@ export async function GET(req: NextRequest) {
 
   const user = await prisma.user.findUnique({
     where: { id: authUser.id },
-    select: { name: true, email: true, hashedPassword: true,targetCal: true },
+    select: { 
+      name: true, 
+      email: true, 
+      hashedPassword: true,
+      targetCal: true,
+      targetProtein: true,
+      targetFat: true,
+      targetCarbs: true,
+      dislikedFoods: true,
+      allergens: true
+    },
   });
   if (!user) {
     return NextResponse.json({ error: "not found" }, { status: 404 });
@@ -29,12 +39,43 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  const { name, email, targetCal, newPassword } = await req.json();
+  const { 
+    name, 
+    email, 
+    targetCal, 
+    targetProtein,
+    targetFat,
+    targetCarbs,
+    dislikedFoods,
+    allergens,
+    newPassword 
+  } = await req.json();
+  
   if (!name || !email || typeof targetCal !== 'number') {
     return NextResponse.json({ error: "invalid input" }, { status: 400 });
   }
 
-  const updateData: { name: string; email: string; targetCal: number; hashedPassword?: string } = { name, email, targetCal };
+  const updateData: {
+    name: string;
+    email: string;
+    targetCal: number;
+    targetProtein?: number | null;
+    targetFat?: number | null;
+    targetCarbs?: number | null;
+    dislikedFoods?: string[];
+    allergens?: string[];
+    hashedPassword?: string;
+  } = { 
+    name, 
+    email, 
+    targetCal,
+    targetProtein: targetProtein || null,
+    targetFat: targetFat || null,
+    targetCarbs: targetCarbs || null,
+    dislikedFoods: dislikedFoods || [],
+    allergens: allergens || []
+  };
+  
   if (newPassword && typeof newPassword === "string" && newPassword.length >= 8) {
     updateData.hashedPassword = await bcrypt.hash(newPassword, 10);
   }
@@ -43,7 +84,16 @@ export async function PUT(req: NextRequest) {
     const updated = await prisma.user.update({
       where: { id: authUser.id },
       data: updateData,
-      select: { name: true, email: true, targetCal: true },
+      select: { 
+        name: true, 
+        email: true, 
+        targetCal: true,
+        targetProtein: true,
+        targetFat: true,
+        targetCarbs: true,
+        dislikedFoods: true,
+        allergens: true
+      },
     });
     return NextResponse.json({ user: updated }, { status: 200 });
   } catch (e: unknown) {
