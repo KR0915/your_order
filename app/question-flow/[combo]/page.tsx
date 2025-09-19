@@ -41,10 +41,30 @@ export default function ResultPage() {
         ) : (
           <>
             <h1 className="text-2xl font-bold text-orange-700 mb-4">{recommendation}</h1>
-            <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(recommendation || '')}`} target="_blank" rel="noopener noreferrer" className="inline-block mt-4 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
-              Googleマップで探す
-            </a>
-            <button onClick={() => router.push('/question-flow')} className="mt-4 block mx-auto text-sm text-orange-700 underline">
+            
+            {/* マップで探すボタンを追加 */}
+            <div className="space-y-3 mt-4">
+              <a 
+                href={`/map?dish=${encodeURIComponent(recommendation || '')}`} 
+                className="inline-block w-full px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+              >
+                🗺️ 地図でレストランを探す
+              </a>
+              
+              <a 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(recommendation || '')}`} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block w-full px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+              >
+                📍 Googleマップで探す
+              </a>
+            </div>
+            
+            <button 
+              onClick={() => router.push('/question-flow')} 
+              className="mt-4 block mx-auto text-sm text-orange-700 underline hover:text-orange-900"
+            >
               もう一度やってみる
             </button>
           </>
