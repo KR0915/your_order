@@ -25,6 +25,9 @@ model Recipe {
   createdAt    DateTime      @default(now())
   combo        String        @unique
   calorie      Int?
+  protein      Float?        // タンパク質 (g)
+  fat          Float?        // 脂質 (g)
+  carbs        Float?        // 炭水化物 (g)
   consumptions Consumption[]
 }
 

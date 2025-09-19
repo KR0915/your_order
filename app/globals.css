@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* スムーススクロールを全体に適用 */
+html {
+  scroll-behavior: smooth;
+}
+
 /* リセットと背景画像設定 */
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  overflow-x: hidden; /* 横スクロールのみ無効化 */
 }
 
 body.background-image {
@@ -15,6 +20,7 @@ body.background-image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed; /* 背景を固定 */
   position: relative;
 }
 
@@ -74,16 +80,4 @@ body.background-image {
 
 .scroll-up.animate-loop {
   animation: loop-up 20s linear infinite;
-}
-
-/* 背景に重ねる半透明レイヤー */
-.overlay {
-  position: fixed; /* ← fixed にすることで常に画面全体を覆う */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 0;
-  pointer-events: none;
 }
