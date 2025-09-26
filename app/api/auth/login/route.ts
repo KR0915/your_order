@@ -6,6 +6,7 @@ import { serialize } from "cookie";
 import prisma from "@/app/lib/prisma";
 
 // JWT_SECRETの取得をランタイムで行う
+
 function getJWTSecret() {
   const secret = process.env.JWT_SECRET;
   if (!secret) {
