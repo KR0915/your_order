@@ -15,17 +15,22 @@ function getJWTSecret() {
 
 // POST /api/auth/login
 export async function POST(req: NextRequest) {
-  const { email, password } = await req.json();
+  try {
+    const { email, password } = await req.json();
 
-  if (!email || !password) {
-    return NextResponse.json({ error: "invalid input" }, { status: 400 });
-  }
+    if (!email || !password) {
+      return NextResponse.json({ error: "invalid input" }, { status: 400 });
+    }
 
-  // email だけ select して余計なフィールド読み込みを防ぐ
-  const user = await prisma.user.findUnique({
-    where: { email },
-    select: { id: true, email: true, hashedPassword: true },
-  });
+    console.log(`[LOGIN] Attempting login for email: ${email}`);
+
+    // email だけ select して余計なフィールド読み込みを防ぐ
+    const user = await prisma.user.findUnique({
+      where: { email },
+      select: { id: true, email: true, hashedPassword: true },
+    });
+
+    console.log(`[LOGIN] User found: ${!!user}, hasPassword: ${!!user?.hashedPassword}`);
 
   // ユーザー不在 or hashedPassword=null は認証失敗
   if (!user || !user.hashedPassword) {
@@ -54,6 +59,13 @@ export async function POST(req: NextRequest) {
     { message: "ok" },
     { status: 200, headers: { "Set-Cookie": cookie } }
   );
+  } catch (error) {
+    console.error('[LOGIN] Error:', error);
+    return NextResponse.json(
+      { error: "Internal server error", details: error instanceof Error ? error.message : String(error) },
+      { status: 500 }
+    );
+  }
 }
 
 // （任意）GET テスト用
