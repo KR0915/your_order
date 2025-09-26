@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { getRestaurantsByMood, getRestaurantsByDish, getCurrentLocation, Restaurant } from '../services/mapService';
@@ -13,7 +13,7 @@ const RestaurantMap = dynamic(() => import('../components/RestaurantMap'), {
   </div>
 });
 
-export default function MapPage() {
+function MapContent() {
   const searchParams = useSearchParams();
   const dishName = searchParams.get('dish'); // URLパラメータから料理名を取得
   
@@ -283,5 +283,13 @@ export default function MapPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function MapPage() {
+  return (
+    <Suspense fallback={<div className="p-6 text-center">ページを読み込み中...</div>}>
+      <MapContent />
+    </Suspense>
   );
 }
