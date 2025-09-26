@@ -2,7 +2,13 @@
 import { NextRequest } from "next/server";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET!;
+function getJWTSecret() {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error("Missing JWT_SECRET environment variable");
+  }
+  return secret;
+}
 
 export async function getUserFromRequest(req: NextRequest) {
   // App Router では req.headers.get でヘッダーを読む
@@ -15,7 +21,7 @@ export async function getUserFromRequest(req: NextRequest) {
   if (!token) return null;
 
   try {
-    const payload = jwt.verify(token, JWT_SECRET) as { userId: number };
+    const payload = jwt.verify(token, getJWTSecret()) as { userId: number };
     return { id: payload.userId };
   } catch {
     return null;

@@ -5,9 +5,13 @@ import jwt from "jsonwebtoken";
 import { serialize } from "cookie";
 import prisma from "@/app/lib/prisma";
 
-const JWT_SECRET = process.env.JWT_SECRET!;
-if (!JWT_SECRET) {
-  throw new Error("Missing JWT_SECRET environment variable");
+// JWT_SECRETの取得をランタイムで行う
+function getJWTSecret() {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error("Missing JWT_SECRET environment variable");
+  }
+  return secret;
 }
 
 // POST /api/auth/login
@@ -36,7 +40,7 @@ export async function POST(req: NextRequest) {
   }
 
   // JWT 発行＋クッキーにセット
-  const token = jwt.sign({ userId: user.id, email: user.email }, JWT_SECRET, {
+  const token = jwt.sign({ userId: user.id, email: user.email }, getJWTSecret(), {
     expiresIn: "1d",
   });
   const cookie = serialize("auth_token", token, {
@@ -75,7 +79,7 @@ export async function GET(req: NextRequest) {
   if (!match) {
     return NextResponse.json({ error: "invalid credentials" }, { status: 401 });
   }
-  const token = jwt.sign({ userId: user.id, email: user.email }, JWT_SECRET, {
+  const token = jwt.sign({ userId: user.id, email: user.email }, getJWTSecret(), {
     expiresIn: "1d",
   });
   const cookie = serialize("auth_token", token, {
