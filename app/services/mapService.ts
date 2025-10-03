@@ -1,4 +1,5 @@
 // app/services/mapService.ts
+import { ipLocationService, IPLocationData } from './ipLocationService';
 
 export interface Restaurant {
   id: number;
@@ -55,9 +56,9 @@ export async function getRestaurantRecommendations(
   }
 }
 
-export async function getRestaurantsByDish(dishName: string): Promise<Restaurant[]> {
+export async function getRestaurantsByDish(dishName: string, userLocation?: { lat: number; lng: number }): Promise<Restaurant[]> {
   try {
-    console.log("Fetching restaurants for dish:", dishName); // デバッグ用
+    console.log("Fetching restaurants for dish:", dishName, "at location:", userLocation); // デバッグ用
     
     const response = await fetch('/api/restaurant-search', {
       method: 'POST',
@@ -65,7 +66,8 @@ export async function getRestaurantsByDish(dishName: string): Promise<Restaurant
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        dishName: dishName
+        dishName: dishName,
+        location: userLocation
       }),
     });
 
@@ -414,24 +416,96 @@ export async function getRestaurantsByMood(mood: string): Promise<Restaurant[]> 
 }
 
 // 位置情報を取得する関数
+/**
+ * 複数の方法で位置情報を取得（GPS、IP、手動）
+ */
+export async function getLocationAdvanced(): Promise<IPLocationData> {
+  console.log('🔍 Starting advanced location detection...');
+
+  // 1. まずGPSを試す
+  try {
+    const gpsLocation = await getCurrentLocation();
+    console.log('✅ GPS location obtained:', gpsLocation);
+    
+    return {
+      lat: gpsLocation.lat,
+      lng: gpsLocation.lng,
+      city: '不明',
+      region: '不明',
+      country: '不明',
+      accuracy: 'gps'
+    };
+  } catch (gpsError) {
+    console.log('⚠️ GPS failed, trying IP location:', gpsError instanceof Error ? gpsError.message : 'Unknown error');
+  }
+
+  // 2. GPSが失敗したらIPから取得
+  try {
+    const ipLocation = await ipLocationService.getLocationFromIP();
+    console.log('✅ IP location obtained:', ipLocation);
+    return ipLocation;
+  } catch (ipError) {
+    console.error('❌ IP location also failed:', ipError);
+    
+    // 3. 最終的にデフォルト位置（東京駅）
+    return {
+      lat: 35.6762,
+      lng: 139.6503,
+      city: '東京',
+      region: '東京都',
+      country: '日本',
+      accuracy: 'ip'
+    };
+  }
+}
+
 export function getCurrentLocation(): Promise<{ lat: number; lng: number }> {
   return new Promise((resolve, reject) => {
     if (!navigator.geolocation) {
+      console.error('❌ Geolocation is not supported by this browser');
       reject(new Error('Geolocation is not supported by this browser.'));
       return;
     }
 
+    // ブラウザの位置情報設定をチェック
+    console.log('🔍 Checking geolocation permissions...');
+    if ('permissions' in navigator) {
+      navigator.permissions.query({ name: 'geolocation' }).then((permission) => {
+        console.log('📍 Geolocation permission state:', permission.state);
+      });
+    }
+
+    console.log('📡 Requesting user location...');
+    
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        resolve({
+        const location = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
-        });
+        };
+        console.log('✅ User location obtained successfully:', location);
+        console.log('Accuracy:', position.coords.accuracy, 'meters');
+        console.log('Timestamp:', new Date(position.timestamp).toLocaleString());
+        resolve(location);
       },
       (error) => {
-        console.error('Geolocation error:', error);
+        console.error('❌ Geolocation error:', error.message);
+        console.error('Error code:', error.code);
+        console.error('Error details:', {
+          PERMISSION_DENIED: error.code === 1,
+          POSITION_UNAVAILABLE: error.code === 2,
+          TIMEOUT: error.code === 3
+        });
+        
         // デフォルトで東京駅の座標を返す
-        resolve({ lat: 35.6762, lng: 139.6503 });
+        const defaultLocation = { lat: 35.6762, lng: 139.6503 };
+        console.log('🔄 Using default location (Tokyo Station):', defaultLocation);
+        resolve(defaultLocation);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,  // タイムアウトを15秒に延長
+        maximumAge: 300000 // 5分間キャッシュに短縮
       }
     );
   });

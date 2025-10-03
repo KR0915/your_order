@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { getRestaurantsByMood, getRestaurantsByDish, getCurrentLocation, Restaurant } from '../services/mapService';
+import { getRestaurantsByMood, getRestaurantsByDish, getLocationAdvanced, Restaurant } from '../services/mapService';
+import { IPLocationData } from '../services/ipLocationService';
 
 // LeafletマップをSSR無しで動的インポート
 const RestaurantMap = dynamic(() => import('../components/RestaurantMap'), {
@@ -20,33 +21,10 @@ function MapContent() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedMood, setSelectedMood] = useState<string>('');
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [userLocation, setUserLocation] = useState<IPLocationData | null>(null);
   const [selectedRestaurant, setSelectedRestaurant] = useState<Restaurant | null>(null);
 
   const moods = ['元気', 'リラックス', 'ロマンチック', '冒険', '懐かしい', '贅沢'];
-
-  // 位置情報取得
-  useEffect(() => {
-    getCurrentLocation()
-      .then(location => {
-        setUserLocation(location);
-      })
-      .catch(error => {
-        console.error('位置情報の取得に失敗:', error);
-      });
-  }, []);
-
-  // 初期レストラン取得
-  useEffect(() => {
-    console.log("Initial load with dishName:", dishName); // デバッグ用
-    if (dishName) {
-      // 料理名が指定されている場合
-      loadRestaurantsByDish(dishName);
-    } else {
-      // デフォルトは気分モード
-      loadRestaurants('リラックス');
-    }
-  }, [dishName]);
 
   const loadRestaurants = async (mood: string) => {
     setLoading(true);
@@ -64,11 +42,11 @@ function MapContent() {
     }
   };
 
-  const loadRestaurantsByDish = async (dish: string) => {
+  const loadRestaurantsByDish = useCallback(async (dish: string) => {
     setLoading(true);
     try {
-      console.log("Loading restaurants for dish:", dish); // デバッグ用
-      const restaurantData = await getRestaurantsByDish(dish);
+      console.log("Loading restaurants for dish:", dish, "with location:", userLocation); // デバッグ用
+      const restaurantData = await getRestaurantsByDish(dish, userLocation || undefined);
       console.log("Received restaurant data:", restaurantData); // デバッグ用
       setRestaurants(restaurantData);
     } catch (error) {
@@ -78,7 +56,40 @@ function MapContent() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userLocation]);
+
+  // 位置情報取得（拡張版）
+  useEffect(() => {
+    console.log('🌍 Starting advanced location acquisition...');
+    getLocationAdvanced()
+      .then(location => {
+        console.log('🎯 Advanced location set:', location);
+        setUserLocation(location);
+      })
+      .catch(error => {
+        console.error('❌ 位置情報の取得に失敗:', error);
+      });
+  }, []);
+
+  // 初期レストラン取得
+  useEffect(() => {
+    console.log("Initial load with dishName:", dishName); // デバッグ用
+    if (dishName) {
+      // 料理名が指定されている場合
+      loadRestaurantsByDish(dishName);
+    } else {
+      // デフォルトは気分モード
+      loadRestaurants('リラックス');
+    }
+  }, [dishName, loadRestaurantsByDish]);
+
+  // 位置情報が更新されたら再検索
+  useEffect(() => {
+    if (userLocation && dishName) {
+      console.log("User location updated, reloading restaurants"); // デバッグ用
+      loadRestaurantsByDish(dishName);
+    }
+  }, [userLocation, dishName, loadRestaurantsByDish]);
 
   const handleMoodChange = (mood: string) => {
     setSelectedMood(mood);
@@ -100,6 +111,93 @@ function MapContent() {
               : "あなたの気分に合わせたレストランを地図で確認できます"
             }
           </p>
+          
+          {/* 位置情報デバッグ表示（拡張版） */}
+          <div className="mt-2 p-2 bg-gray-50 rounded text-xs">
+            <div className="text-gray-600">
+              📍 現在地: {userLocation ? 
+                `${userLocation.lat.toFixed(4)}, ${userLocation.lng.toFixed(4)}` : 
+                '取得中...'
+              }
+            </div>
+            {userLocation && (
+              <>
+                <div className="text-green-600 mt-1">
+                  🏙️ {userLocation.city}, {userLocation.region}
+                </div>
+                <div className="text-blue-600 mt-1 flex items-center justify-between">
+                  {userLocation.accuracy === 'gps' ? '📡 GPS' : '🌐 IP'} 位置情報取得完了
+                  <button
+                    onClick={() => {
+                      setUserLocation(null);
+                      console.log('🔄 Refreshing location...');
+                      getLocationAdvanced()
+                        .then(location => {
+                          console.log('🎯 Location refreshed:', location);
+                          setUserLocation(location);
+                        })
+                        .catch(error => {
+                          console.error('❌ Failed to refresh location:', error);
+                        });
+                    }}
+                    className="text-xs text-blue-600 hover:text-blue-800"
+                  >
+                    🔄 再取得
+                  </button>
+                </div>
+              </>
+            )}
+            {!userLocation && (
+              <div className="mt-2 space-y-1">
+                <button
+                  onClick={() => {
+                    const cities = ['東京', '大阪', '名古屋', '横浜', '京都', '神戸', '福岡', '札幌', '仙台', '広島'];
+                    const cityName = prompt(`都市を選択してください:\n${cities.join(', ')}`);
+                    if (cityName && cities.includes(cityName)) {
+                      // ipLocationService から都市の位置情報を取得
+                      import('../services/ipLocationService').then(({ ipLocationService }) => {
+                        const cityLocations = ipLocationService.getMajorCityLocations();
+                        const cityLocation = cityLocations[cityName];
+                        if (cityLocation) {
+                          setUserLocation(cityLocation);
+                          console.log('🏙️ City location set:', cityLocation);
+                        }
+                      });
+                    }
+                  }}
+                  className="block w-full text-xs text-blue-600 hover:text-blue-800"
+                >
+                  🏙️ 都市から選択
+                </button>
+                
+                <button
+                  onClick={() => {
+                    const manualLat = prompt('緯度を入力してください（例: 35.6762）');
+                    const manualLng = prompt('経度を入力してください（例: 139.6503）');
+                    if (manualLat && manualLng) {
+                      const lat = parseFloat(manualLat);
+                      const lng = parseFloat(manualLng);
+                      if (!isNaN(lat) && !isNaN(lng)) {
+                        const manualLocation: IPLocationData = {
+                          lat,
+                          lng,
+                          city: '手動設定',
+                          region: '手動設定',
+                          country: '手動設定',
+                          accuracy: 'gps'
+                        };
+                        setUserLocation(manualLocation);
+                        console.log('🔧 Manual location set:', manualLocation);
+                      }
+                    }
+                  }}
+                  className="block w-full text-xs text-orange-600 hover:text-orange-800"
+                >
+                  � 座標で設定
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* 料理名指定時の戻るボタンのみ */}
           {dishName && (

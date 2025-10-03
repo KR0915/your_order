@@ -144,3 +144,93 @@ export interface PFCDashboardResponse {
     email: string;
   };
 }
+
+// レストラン関連の型定義
+export interface Restaurant {
+  id: string | number;
+  name: string;
+  latitude: number;
+  longitude: number;
+  cuisine: string;
+  rating: number;
+  description?: string;
+  address?: string;
+  phone?: string;
+}
+
+// ホットペッパーAPI用のレストラン型
+export interface HotPepperRestaurant {
+  id: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  cuisine: string;
+  rating?: number;
+  description?: string;
+  address: string;
+  phone?: string;
+  access?: string;
+  genre?: string;
+  budget?: string;
+  open?: string;
+  close?: string;
+  photo?: {
+    pc?: {
+      l?: string;
+      m?: string;
+      s?: string;
+    };
+    mobile?: {
+      l?: string;
+      s?: string;
+    };
+  };
+  urls?: {
+    pc?: string;
+    mobile?: string;
+  };
+}
+
+// ホットペッパーAPI レスポンス型
+export interface HotPepperApiResponse {
+  results: {
+    shop: Array<{
+      id: string;
+      name: string;
+      name_kana?: string;
+      lat: number;
+      lng: number;
+      genre: {
+        name: string;
+        catch?: string;
+      };
+      address: string;
+      access?: string;
+      tel?: string;
+      open?: string;
+      close?: string;
+      catch?: string;
+      budget?: {
+        average?: string;
+        name?: string;
+      };
+      photo: {
+        pc: {
+          l: string;
+          m: string;
+          s: string;
+        };
+        mobile: {
+          l: string;
+          s: string;
+        };
+      };
+      urls: {
+        pc: string;
+      };
+    }>;
+    results_available: number;
+    results_returned: string;
+    results_start: number;
+  };
+}
