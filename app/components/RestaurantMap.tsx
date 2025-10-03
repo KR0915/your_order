@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Restaurant } from '../services/mapService';
+import { IPLocationData } from '../services/ipLocationService';
 
 // ユーザー位置用のアイコン
 const userIcon = new Icon({
@@ -40,8 +41,6 @@ const getRestaurantIcon = (cuisine: string) => {
   });
 };
 
-import { IPLocationData } from '../services/ipLocationService';
-
 interface RestaurantMapProps {
   restaurants: Restaurant[];
   userLocation?: IPLocationData | null;
@@ -49,14 +48,10 @@ interface RestaurantMapProps {
 
 export default function RestaurantMap({ restaurants, userLocation }: RestaurantMapProps) {
   // 東京駅を中心とした初期表示位置（ユーザーの位置がある場合はそれを使用）
-  console.log('🗺️ RestaurantMap rendering with userLocation:', userLocation);
-  
   const defaultCenter: [number, number] = userLocation 
     ? [userLocation.lat, userLocation.lng] 
     : [35.6762, 139.6503];
   const defaultZoom = 13;
-
-  console.log('🎯 Map center set to:', defaultCenter);
 
   return (
     <MapContainer
