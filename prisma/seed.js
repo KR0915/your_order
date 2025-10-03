@@ -1,5 +1,6 @@
 // prisma/seed.js
 const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcryptjs');
 const prisma = new PrismaClient();
 
 // ─────────────────────────────────────────────
@@ -112,19 +113,23 @@ const consumptionSeed = [
 
 async function seed() {
   // ────────────
-  // ① User の upsert
+  // ① User の upsert (パスワード付き)
   // ────────────
+  const hashedPassword = await bcrypt.hash('password123', 10);
+  
   for (const u of userSeed) {
     await prisma.user.upsert({
       where: { email: u.email },
       update: {
         name: u.name,
         targetCal: u.targetCal,
+        hashedPassword: hashedPassword,
       },
       create: {
         name: u.name,
         email: u.email,
         targetCal: u.targetCal,
+        hashedPassword: hashedPassword,
       },
     });
   }
