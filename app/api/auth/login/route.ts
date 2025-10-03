@@ -26,6 +26,9 @@ export async function POST(req: NextRequest) {
 
     console.log(`[LOGIN] Attempting login for email: ${email}`);
 
+    // JWT_SECRET確認
+    console.log(`[LOGIN] JWT_SECRET length: ${process.env.JWT_SECRET?.length || 0}`);
+
     // email だけ select して余計なフィールド読み込みを防ぐ
     const user = await prisma.user.findUnique({
       where: { email },
