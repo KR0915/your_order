@@ -40,27 +40,53 @@ export async function POST(req: NextRequest) {
   }
 
   // パスワード照合
-  const match = await bcrypt.compare(password, user.hashedPassword);
-  if (!match) {
-    return NextResponse.json({ error: "invalid credentials" }, { status: 401 });
+  console.log('[LOGIN] Starting password comparison...');
+  try {
+    const match = await bcrypt.compare(password, user.hashedPassword);
+    console.log('[LOGIN] Password comparison result:', match);
+    if (!match) {
+      return NextResponse.json({ error: "invalid credentials" }, { status: 401 });
+    }
+  } catch (bcryptError) {
+    console.error('[LOGIN] bcrypt Error:', bcryptError);
+    return NextResponse.json(
+      { error: "Password comparison failed", details: bcryptError instanceof Error ? bcryptError.message : String(bcryptError) },
+      { status: 500 }
+    );
   }
 
   // JWT 発行＋クッキーにセット
-  const token = jwt.sign({ userId: user.id, email: user.email }, getJWTSecret(), {
-    expiresIn: "1d",
-  });
-  const cookie = serialize("auth_token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24,
-  });
+  console.log('[LOGIN] About to generate JWT token...');
+  
+  try {
+    const secret = getJWTSecret();
+    console.log('[LOGIN] JWT_SECRET obtained successfully');
+    
+    const token = jwt.sign({ userId: user.id, email: user.email }, secret, {
+      expiresIn: "1d",
+    });
+    console.log('[LOGIN] JWT token generated successfully');
+    
+    const cookie = serialize("auth_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24,
+    });
+    console.log('[LOGIN] Cookie serialized successfully');
 
-  return NextResponse.json(
-    { message: "ok" },
-    { status: 200, headers: { "Set-Cookie": cookie } }
-  );
+    return NextResponse.json(
+      { message: "ok" },
+      { status: 200, headers: { "Set-Cookie": cookie } }
+    );
+  } catch (jwtError) {
+    console.error('[LOGIN] JWT Error:', jwtError);
+    return NextResponse.json(
+      { error: "JWT generation failed", details: jwtError instanceof Error ? jwtError.message : String(jwtError) },
+      { status: 500 }
+    );
+  }
   } catch (error) {
     console.error('[LOGIN] Error:', error);
     return NextResponse.json(
